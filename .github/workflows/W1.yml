@@ -11,7 +11,7 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr 3 + 7 > math.txt
+          expr 3 + 7 > math-output.txt
       - name: Upload math.txt
         uses: actions/upload-artifact@v3
         with:
