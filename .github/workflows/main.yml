@@ -1,0 +1,33 @@
+name: Main workflow 
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  call_job_1:
+    name: calls W1
+    uses: therapon/workflow-tests/.github/workflows/W1.yml@main
+
+  call_job_2:
+    name: calls W2
+    uses: therapon/workflow-tests/.github/workflows/W2.yml@main
+  
+  collect_outputs: 
+   name: Collects outputs from previous 2 workflows 
+   needs: [call_job_1, call_job_2]
+   runs-on: ubuntu-latest
+   steps:
+      - name: Get w1 output
+        uses: actions/download-artifact@v3
+        with: 
+         name: math-output
+         path: collects/w1
+
+      - name: Get w2 output 
+        uses: actions/download-artifact@v3
+        with: 
+         name: math-output2
+         path: collects/w2
+
+      - name: Display dir 
+        run: ls -lR 

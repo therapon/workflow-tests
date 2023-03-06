@@ -1,0 +1,19 @@
+name: W1 generates an artifact
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    name: Add 3 and 7
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > math.txt
+      - name: Upload math.txt
+        uses: actions/upload-artifact@v3
+        with:
+          name: math-output
+          path: math-output.txt
