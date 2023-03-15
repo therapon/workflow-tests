@@ -12,11 +12,13 @@ jobs:
       credentials:
         username: ${{ secrets.DOCKER_HUB_USER }}
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      volumes:
+        - target:/target
 
     steps:
       - name: Generate output
         shell: bash
-        run: mkdir -p target/bin; echo "This is the output" > target/bin/out.txt
+        run: mkdir -p /target/bin; echo "This is the output" > /target/bin/out.txt
 
   collect_outputs:
     name: Collects outputs from previous 2 workflows
