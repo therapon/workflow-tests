@@ -8,7 +8,7 @@ jobs:
     runs-on: arm64
     name: Generate output from a container job
     container:
-      image: therapon/misc:latest
+      image: debian:11-slim
       credentials:
         username: ${{ secrets.DOCKER_HUB_USER }}
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
