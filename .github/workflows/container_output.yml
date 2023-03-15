@@ -8,7 +8,7 @@ jobs:
   container_output:
     runs-on: ubuntu-20.04
     name: Generate output from a container job
-    container: rust:buster-slim
+    container: registry.hub.docker.com/debian:11-slim
     steps:
       - name: Generate output 
         shell: bash
