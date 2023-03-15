@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
+  make_dir:
+    runs-on: ubuntu-20.04
   container_output:
     runs-on: ubuntu-20.04
     name: Generate output from a container job
@@ -13,7 +15,7 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USER }}
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
       volumes:
-        - target:/target
+        - .:/target
 
     steps:
       - name: Generate output
@@ -26,4 +28,4 @@ jobs:
     needs: container_output
     steps:
       - name: Display dir
-        run: ls -lR
+        run: pwd; ls -lR
