@@ -6,6 +6,7 @@ on:
 jobs:
 
   container_output:
+    runs-on: ubuntu-20.04
     name: Generate output from a container job
     container: rust:buster-slim
     steps:
