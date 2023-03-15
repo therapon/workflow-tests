@@ -1,0 +1,22 @@
+name: Does container output stay for the next job? 
+
+on: 
+  workflow_dispatch:
+
+jobs:
+
+  container_output:
+    name: Generate output from a container job
+    container: rust:buster-slim
+    steps:
+      - name: Generate output 
+        shell: bash
+        run: mkdir -p target/bin; echo "This is the output" > target/bin/out.txt
+    
+  
+  collect_outputs: 
+   name: Collects outputs from previous 2 workflows 
+   runs-on: ubuntu-latest
+   steps:
+      - name: Display dir 
+        run: ls -lR 
