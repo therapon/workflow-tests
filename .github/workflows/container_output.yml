@@ -1,0 +1,29 @@
+name: Does container output stay for the next job?
+
+on:
+  workflow_dispatch:
+
+jobs:
+  container_output:
+    runs-on: ubuntu-20.04
+    name: Generate output from a container job
+    container:
+      image: debian:11-slim
+      credentials:
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      volumes:
+         - ${{ github.workspace }}/target:/target
+
+    steps:
+      - name: Generate output
+        shell: bash
+        run: mkdir -p /target/bin; echo "This is the output" > /target/bin/out.txt
+
+  collect_outputs:
+    name: Collects outputs from previous 2 workflows
+    runs-on: ubuntu-latest
+    needs: container_output
+    steps:
+      - name: Display dir
+        run: pwd; ls -lR
