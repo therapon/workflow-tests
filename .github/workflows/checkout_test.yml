@@ -26,5 +26,5 @@ jobs:
                 name: List files in repo
                 run: ls -lRa
             - 
-                name: Env
+                name: Env vars
                 run: set
