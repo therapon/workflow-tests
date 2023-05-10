@@ -1,0 +1,23 @@
+name: Checkout tests 
+
+on: 
+  workflow_dispatch:
+
+
+jobs:
+    test_checkout: 
+        runs-on: ubuntu-latest
+        steps:
+            - 
+                name: Checkout repo
+                uses: actions/checkout@v3
+            - 
+                name: Checkout kaskada-ai/kaskada
+                uses: actions/checkout@v3
+                with:
+                    repository: kaskada-ai/kaskada
+                    path: other_repo
+                    token: ${{ secrets.GITHUB_TOKEN }}
+            - 
+                name: List files in repo
+                run: ls -la
