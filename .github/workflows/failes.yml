@@ -1,0 +1,14 @@
+name: Will a failed python script fail the workflow?
+
+on:
+    workflow_dispatch:
+
+jobs: 
+    the_job: 
+        name: Will this fail the job? 
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Run the python script 
+              run: python3 ./test-python.py
+
+
