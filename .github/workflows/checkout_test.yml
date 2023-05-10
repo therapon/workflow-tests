@@ -21,3 +21,6 @@ jobs:
             - 
                 name: List files in repo
                 run: ls -lRa
+            - 
+                name: Env
+                run: set
