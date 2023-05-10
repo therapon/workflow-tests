@@ -20,4 +20,4 @@ jobs:
                     token: ${{ secrets.GITHUB_TOKEN }}
             - 
                 name: List files in repo
-                run: ls -la
+                run: ls -lRa
